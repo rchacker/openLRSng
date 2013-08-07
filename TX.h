@@ -213,6 +213,7 @@ void checkButton(void)
         bindInitDefaults();
       }
       bindRandomize();
+      //randomizeClearChannel(); // replaces bindRandomize
       bindWriteEeprom();
       bindPrint();
     }
