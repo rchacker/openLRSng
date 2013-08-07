@@ -1,1 +1,11 @@
 *.bak
+
+.DS_Store
+
+openLRSng/Builds/*
+
+openlrsng.xcodeproj/project 0.pbxproj
+
+openlrsng.xcodeproj/project.xcworkspace/*
+
+openlrsng.xcodeproj/xcuserdata/*

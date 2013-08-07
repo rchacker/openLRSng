@@ -76,8 +76,8 @@ void randomizeClearChannel(void)
   
   //todo setup the module here...
   rfmSetCarrierFrequency(bind_data.rf_frequency);
-  spiWriteRegister(0x7a, bind_data.rf_channel_spacing);   // channel spacing
-  spiWriteRegister(0x1c, r->r_1c); //set IF filter bandwidth to match our data rate.
+  //spiWriteRegister(0x7a, bind_data.rf_channel_spacing);   // channel spacing
+  //spiWriteRegister(0x1c, r->r_1c); //set IF filter bandwidth to match our data rate.
   to_rx_mode();
   
   for (uint8_t i = 0; i < CHANNEL_POOL; i++) {
@@ -139,12 +139,12 @@ int8_t allocateHopchannels(uint8_t RSSI_threshold)
   }
   //otherwise this may never end..
   
-  if (thresholdCount >= bind_data.hopcount)
+  if (thresholdCount >= MAXHOPS)  //need to get proper hopcount from somewhere
   {
     return -1; //perhaps return number we were out by.
   }
   
-  for (uint8_t c = 0; c < bind_data.hopcount; c++) {
+  for (uint8_t c = 0; c < MAXHOPS; c++) {
   again:
     uint8_t ch = random(CHANNEL_POOL);
     if (rssiReadings[ch] > RSSI_threshold)

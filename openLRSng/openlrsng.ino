@@ -67,7 +67,7 @@
 //####################
 
 #include <Arduino.h>
-#include <EEPROM.h>
+#include "EEPROM.h"  //quotes to make it embedxcode compatible.
 
 #include "hardware.h"
 #include "binding.h"
@@ -77,8 +77,8 @@
 #include "binary_com.h"
 #include "dialog.h"
 #include "frskytx.h"
-#include "clear_channel.h"
 #include "TX.h"
+#include "clear_channel.h"
 #else // COMPILE_RX
 #include "RX.h"
 #endif
