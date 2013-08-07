@@ -408,7 +408,7 @@ void loop(void)
       if (lastTelemetry) {
         if ((time - lastTelemetry) > getInterval(&bind_data)) {
           // telemetry lost
-          buzzerOn(BZ_FREQ);
+          buzzerOn(2100 + (4 * RSSI_rx));
           lastTelemetry=0;
         } else {
           // telemetry link re-established
