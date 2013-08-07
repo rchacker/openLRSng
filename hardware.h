@@ -291,10 +291,12 @@ void setupRfmInterrupt()
 #define PPM_Signal_Interrupt PCINT2_vect
 #define PPM_Signal_Edge_Check ((PIND & 0x08)==0x08)
 #endif
-#define BUZZER 6
+#define BUZZER 3
 #define BTN 7
 void buzzerInit()
 {
+  TCCR2A = (1<<WGM21); // mode=CTC
+  TCCR2B = (1<<CS22) | (1<<CS20); // prescaler = 128
   pinMode(BUZZER, OUTPUT);
   digitalWrite(BUZZER, LOW);
 }
@@ -302,9 +304,17 @@ void buzzerInit()
 void buzzerOn(uint16_t freq)
 {
   if (freq) {
-    digitalWrite(BUZZER,HIGH);
+    uint32_t ocr = 125000L / freq;
+    if (ocr>255) {
+      ocr=255;
+    }
+    if (!ocr) {
+      ocr=1;
+    }
+    OCR2A = ocr;
+    TCCR2A |= (1<<COM2B0); // enable output
   } else {
-    digitalWrite(BUZZER,LOW);
+    TCCR2A &= ~(1<<COM2B0); // disable output
   }
 }
 
@@ -334,6 +344,17 @@ const uint8_t OUTPUT_PIN[OUTPUTS] = { 3, 5, 6, 7, 8, 9, 10, 11, 12 , A4, A5, 0, 
 
 #endif
 
+#ifdef COMPILE_TX
+#define Red_LED 9
+#define Green_LED 10
+
+#define Red_LED_ON  PORTB |= _BV(1);
+#define Red_LED_OFF  PORTB &= ~_BV(1);
+
+#define Green_LED_ON  PORTB |= _BV(2);
+#define Green_LED_OFF  PORTB &= ~_BV(2);
+#else
+
 #define Red_LED A3
 #define Green_LED 13
 
@@ -342,6 +363,8 @@ const uint8_t OUTPUT_PIN[OUTPUTS] = { 3, 5, 6, 7, 8, 9, 10, 11, 12 , A4, A5, 0, 
 
 #define Green_LED_ON  PORTB |= _BV(5);
 #define Green_LED_OFF  PORTB &= ~_BV(5);
+
+#endif
 
 //## RFM22B Pinouts for Public Edition (Rx v2)
 #define  nIRQ_1 (PIND & 0x04)==0x04 //D2
