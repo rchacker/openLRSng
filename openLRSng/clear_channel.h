@@ -76,8 +76,8 @@ void randomizeClearChannel(void)
   
   //todo setup the module here...
   rfmSetCarrierFrequency(bind_data.rf_frequency);
-  //spiWriteRegister(0x7a, bind_data.rf_channel_spacing);   // channel spacing
-  //spiWriteRegister(0x1c, r->r_1c); //set IF filter bandwidth to match our data rate.
+  spiWriteRegister(0x7a, bind_data.rf_channel_spacing);   // channel spacing
+  spiWriteRegister(0x1c, modem_params[bind_data.modem_params].r_1c); // r->r_1c  set IF filter bandwidth to match our data rate.
   to_rx_mode();
   
   for (uint8_t i = 0; i < CHANNEL_POOL; i++) {
