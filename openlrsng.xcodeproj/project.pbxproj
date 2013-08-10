@@ -223,7 +223,7 @@
 		AAA2130728190459AA0000EE /* Wire.h in Sources */ = {isa = PBXBuildFile; fileRef = AAAA130728190459AA0000EE /* Wire.h */; };
 		EA2216BB17A5E9120023502F /* EEPROM.h in Sources */ = {isa = PBXBuildFile; fileRef = EA2C16BB17A5E9120023502F /* EEPROM.h */; };
 		EA40FDB917A5C6CE00189868 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA40FDB817A5C6CE00189868 /* main.cpp */; };
-		EA42FDFA17A5C6CF00189868 /* openlrsng.ino in Sources */ = {isa = PBXBuildFile; fileRef = EA40FDFA17A5C6CF00189868 /* openlrsng.ino */; };
+		EA42FDFA17A5C6CF00189868 /* openLRSng.ino in Sources */ = {isa = PBXBuildFile; fileRef = EA40FDFA17A5C6CF00189868 /* openLRSng.ino */; };
 		EA72FE4817A5C9B100B2BD6D /* band_list.h in Sources */ = {isa = PBXBuildFile; fileRef = EA78FE4817A5C9B100B2BD6D /* band_list.h */; };
 		EA72FE4917A5C9B100B2BD6D /* binary_com.h in Sources */ = {isa = PBXBuildFile; fileRef = EA78FE4917A5C9B100B2BD6D /* binary_com.h */; };
 		EA72FE4A17A5C9B100B2BD6D /* binding.h in Sources */ = {isa = PBXBuildFile; fileRef = EA78FE4A17A5C9B100B2BD6D /* binding.h */; };
@@ -233,7 +233,7 @@
 		EA72FE4F17A5C9B100B2BD6D /* hardware.h in Sources */ = {isa = PBXBuildFile; fileRef = EA78FE4F17A5C9B100B2BD6D /* hardware.h */; };
 		EA72FE5217A5C9B200B2BD6D /* RX.h in Sources */ = {isa = PBXBuildFile; fileRef = EA78FE5217A5C9B200B2BD6D /* RX.h */; };
 		EA72FE5317A5C9B200B2BD6D /* TX.h in Sources */ = {isa = PBXBuildFile; fileRef = EA78FE5317A5C9B200B2BD6D /* TX.h */; };
-		EAC280CA17A5F04100E5BE8D /* EEPROM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2C16BA17A5E9110023502F /* EEPROM.cpp */; };
+		EAF8FEF417B603AA006ECECE /* EEPROM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2C16BA17A5E9110023502F /* EEPROM.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -508,7 +508,7 @@
 		EA40FDF617A5C6CF00189868 /* serial1200.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = serial1200.py; path = Utilities/serial1200.py; sourceTree = "<group>"; };
 		EA40FDF817A5C6CF00189868 /* embedXcode_chrono */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = embedXcode_chrono; path = Utilities/embedXcode_chrono; sourceTree = "<group>"; };
 		EA40FDF917A5C6CF00189868 /* TemplateIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = TemplateIcon.icns; path = Utilities/TemplateIcon.icns; sourceTree = "<group>"; };
-		EA40FDFA17A5C6CF00189868 /* openlrsng.ino */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = openlrsng.ino; sourceTree = "<group>"; };
+		EA40FDFA17A5C6CF00189868 /* openLRSng.ino */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = openLRSng.ino; sourceTree = "<group>"; };
 		EA78FE4817A5C9B100B2BD6D /* band_list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = band_list.h; sourceTree = "<group>"; };
 		EA78FE4917A5C9B100B2BD6D /* binary_com.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary_com.h; sourceTree = "<group>"; };
 		EA78FE4A17A5C9B100B2BD6D /* binding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binding.h; sourceTree = "<group>"; };
@@ -518,7 +518,7 @@
 		EA78FE4F17A5C9B100B2BD6D /* hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hardware.h; sourceTree = "<group>"; };
 		EA78FE5217A5C9B200B2BD6D /* RX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RX.h; sourceTree = "<group>"; };
 		EA78FE5317A5C9B200B2BD6D /* TX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TX.h; sourceTree = "<group>"; };
-		EA7DE81017B2E6CB003D9B98 /* clear_channel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = clear_channel.h; path = openLRSng/clear_channel.h; sourceTree = SOURCE_ROOT; };
+		EAF8FEF917B60580006ECECE /* clear_channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clear_channel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -948,7 +948,7 @@
 		EA40FDAA17A5C6CE00189868 = {
 			isa = PBXGroup;
 			children = (
-				EA40FDB717A5C6CE00189868 /* openlrsng */,
+				EA40FDB717A5C6CE00189868 /* openLRSng */,
 				EA40FDB617A5C6CE00189868 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -961,15 +961,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA40FDB717A5C6CE00189868 /* openlrsng */ = {
+		EA40FDB717A5C6CE00189868 /* openLRSng */ = {
 			isa = PBXGroup;
 			children = (
+				EAF8FEF917B60580006ECECE /* clear_channel.h */,
 				EA2C16BA17A5E9110023502F /* EEPROM.cpp */,
 				EA2C16BB17A5E9120023502F /* EEPROM.h */,
 				EA78FE4817A5C9B100B2BD6D /* band_list.h */,
 				EA78FE4917A5C9B100B2BD6D /* binary_com.h */,
 				EA78FE4A17A5C9B100B2BD6D /* binding.h */,
-				EA7DE81017B2E6CB003D9B98 /* clear_channel.h */,
 				EA78FE4C17A5C9B100B2BD6D /* common.h */,
 				EA78FE4D17A5C9B100B2BD6D /* dialog.h */,
 				EA78FE4E17A5C9B100B2BD6D /* frskytx.h */,
@@ -978,7 +978,7 @@
 				EA78FE5317A5C9B200B2BD6D /* TX.h */,
 				EA40FDB817A5C6CE00189868 /* main.cpp */,
 				EA40FDBD17A5C6CF00189868 /* Makefile */,
-				EA40FDFA17A5C6CF00189868 /* openlrsng.ino */,
+				EA40FDFA17A5C6CF00189868 /* openLRSng.ino */,
 				EA40FDBF17A5C6CF00189868 /* Sketchbook */,
 				AAAA130728190459AA000000 /* Resources */,
 				EA40FDC117A5C6CF00189868 /* Configurations */,
@@ -986,7 +986,7 @@
 				EA40FDEC17A5C6CF00189868 /* About */,
 				EA40FDF417A5C6CF00189868 /* Utilities */,
 			);
-			path = openlrsng;
+			path = openLRSng;
 			sourceTree = "<group>";
 		};
 		EA40FDBF17A5C6CF00189868 /* Sketchbook */ = {
@@ -1189,7 +1189,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAC280CA17A5F04100E5BE8D /* EEPROM.cpp in Sources */,
 				EA40FDB917A5C6CE00189868 /* main.cpp in Sources */,
 				EA2216BB17A5E9120023502F /* EEPROM.h in Sources */,
 				EA72FE4817A5C9B100B2BD6D /* band_list.h in Sources */,
@@ -1201,7 +1200,7 @@
 				EA72FE4F17A5C9B100B2BD6D /* hardware.h in Sources */,
 				EA72FE5217A5C9B200B2BD6D /* RX.h in Sources */,
 				EA72FE5317A5C9B200B2BD6D /* TX.h in Sources */,
-				EA42FDFA17A5C6CF00189868 /* openlrsng.ino in Sources */,
+				EA42FDFA17A5C6CF00189868 /* openLRSng.ino in Sources */,
 				AAA2130728190459AA000005 /* Arduino.h in Sources */,
 				AAA2130728190459AA000007 /* malloc.c in Sources */,
 				AAA2130728190459AA000008 /* realloc.c in Sources */,
@@ -1416,6 +1415,7 @@
 				AAA2130728190459AA0000EC /* twi.h in Sources */,
 				AAA2130728190459AA0000ED /* Wire.cpp in Sources */,
 				AAA2130728190459AA0000EE /* Wire.h in Sources */,
+				EAF8FEF417B603AA006ECECE /* EEPROM.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
