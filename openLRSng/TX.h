@@ -168,6 +168,87 @@ void bindMode(void)
   }
 }
 
+const uint8_t BTN_DN = 1;
+const uint8_t BTN_UP = 0;
+uint8_t prevBTNstate = 1; // 0 = down, 1 = up
+
+uint32_t BTN_DN_time = 0;  // time when button went down...
+
+const uint32_t MS_OPT = 2000; //millis between options
+const uint32_t BP_DR = 100; //beep duration
+const uint8_t DEBOUNCE = 20;
+//button is pressed returns -1
+//button is up and no change 0
+//one beep release returns option 1
+//two beeps release returns option 2
+int8_t checkButton(uint8_t no_of_options)
+{
+  uint8_t currentBTNstate = digitalRead(BTN);
+  
+  
+  if (prevBTNstate == BTN_UP && currentBTNstate == BTN_UP)
+  {
+    return 0;
+  }
+  else if (prevBTNstate == BTN_UP && currentBTNState == BTN_DN)
+  {
+    delay(DEBOUNCE);
+    if(digitalRead(BTN) == BTN_DN)
+    {
+      BTN_DN_time = millis();
+      prevBTNstate = currentBTNstate;
+    }
+    return 0;
+  }
+  else if (prevBTNstate == BTN_DN && currentBTNSTATE == BTN_DN)
+  {
+    uint32_t pressed_time = millis() - BTN_DN_time;
+    
+    //beep at these values..
+    //0 to 100;
+    //2000 to 2100, 2200 to 2300
+    //4000 to 4100, 4200 to 4300, 4400 to 4500
+    //6000 to 6100, 6200 to 6300, 6400 to 6500, 6600 to 6700
+    
+    //0 to BP_DR
+    //1*MS_OPT  to  1*MS_OPT + BP_DR  ,  1*MS_OPT + 2*BP_DR  to 1*MS_OPT + 3*BP_DR
+    
+    
+    uint32_t remainder = pressed_time % MS_OPT);
+    uint8_t max_beeps = pressed_time / MS_OPT;
+    if(remainder/(max_beeps*BP_DR))
+    {
+      if ((remainder/BP_DR)%2)
+      {
+        buzzerOff();
+      }
+      else
+      {
+        buzzerOn(BZ_FREQ);
+      }
+    }
+    return 0;
+  }
+  else  //button has lifted.
+  {
+    uint32_t pressed_time = millis() - BTN_DN_time;
+    delay(DEBOUNCE);
+    if(digitalRead(BTN) == BTN_UP)
+    {
+      prevBTNstate = BTN_UP;
+      return pressed_time / MS_OPT + 1;
+    }
+    else
+    {
+      return 0;
+    }
+  }
+  
+  
+
+  
+}
+
 void checkButton(void)
 {
 
