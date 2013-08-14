@@ -293,8 +293,8 @@ void checkButton(void)
       if (doDefaults) {
         bindInitDefaults();
       }
-      bindRandomize();
-      //randomizeClearChannel(); // replaces bindRandomize
+      //bindRandomize();
+      randomizeClearChannel(); // replaces bindRandomize
       bindWriteEeprom();
       bindPrint();
     }

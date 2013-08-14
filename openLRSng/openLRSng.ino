@@ -77,8 +77,8 @@
 #include "binary_com.h"
 #include "dialog.h"
 #include "frskytx.h"
-#include "TX.h"
 #include "clear_channel.h"
+#include "TX.h"
 #else // COMPILE_RX
 #include "RX.h"
 #endif
