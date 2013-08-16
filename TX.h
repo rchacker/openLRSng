@@ -168,6 +168,86 @@ void bindMode(void)
   }
 }
 
+
+const uint8_t BTN_DN = 0;
+const uint8_t BTN_UP = 1;
+
+uint8_t prevBTNstate = 1; // 0 = down, 1 = up
+uint32_t BTN_DN_time = 0;  // time when button went down...
+uint8_t return_state = 0;
+
+const uint32_t MS_OPT = 1000; //millis between options
+const uint32_t BP_DR = 50; //beep duration
+const uint8_t DEBOUNCE = 20;
+
+const uint8_t BTN_GONE_DOWN = -2;
+const uint8_t BTN_HELD_DOWN = -1;
+const uint8_t BTN_NOT_PRESSED = 0;
+//one beep release returns option 1
+//two beeps release returns option 2
+//etc..
+int8_t checkButton(uint8_t no_of_options)
+{
+  uint8_t currentBTNstate = digitalRead(BTN);
+  
+  
+  if (prevBTNstate == BTN_UP && currentBTNstate == BTN_UP)
+  {
+    return BTN_NOT_PRESSED;
+  }
+  else if (prevBTNstate == BTN_UP && currentBTNstate == BTN_DN)
+  {
+    delay(DEBOUNCE);
+    if(digitalRead(BTN) == BTN_DN)
+    {
+      BTN_DN_time = millis();
+      prevBTNstate = currentBTNstate;
+      return_state = 0;
+      return BTN_GONE_DOWN;
+    }
+    else //failed press
+    {
+      return BTN_NOT_PRESSED;
+    }  
+  }
+  else if (prevBTNstate == BTN_DN && currentBTNstate == BTN_DN)
+  {
+    uint32_t pressed_time = millis() - BTN_DN_time;
+    uint8_t new_state = pressed_time / MS_OPT + 1;
+    
+    if(new_state != return_state)
+    {
+    
+      for (int i = 0; i< return_state; i++)
+      {
+        buzzerOn(BZ_FREQ);
+        delay(BP_DR);
+        buzzerOff();
+        delay(BP_DR);            
+      }
+      return_state = new_state;
+    } 
+    
+    return BTN_HELD_DOWN;
+  }
+  else  //button has lifted.
+  {
+    uint32_t pressed_time = millis() - BTN_DN_time;
+    delay(DEBOUNCE);
+    if(digitalRead(BTN) == BTN_UP)
+    {
+      prevBTNstate = BTN_UP;
+      return pressed_time / MS_OPT + 1;
+    }
+    else //was a false lift
+    {
+      return BTN_HELD_DOWN;
+    }
+  }
+  
+}
+
+
 void checkButton(void)
 {
   uint32_t time, loop_time;
@@ -530,6 +610,44 @@ void loop(void)
   //Green LED will be OFF
   Green_LED_OFF;
 
-  checkFS();
+  //checkFS();
+  
+  switch (checkButton(4)) {
+    case BTN_NOT_PRESSED:
+      //if(FSstate)
+      //  if( (millis()-FStime) > FS_TIMEOUT)
+      //  {
+      //    FSstate = 0;
+      //    Red_LED_OFF;
+      //  }
+      break;
+    case BTN_GONE_DOWN:
+      Serial.println("BTN_GONE_DOWN");
+      break;
+    case BTN_HELD_DOWN:
+      Serial.println("BTN_PRESSED");
+      break;
+    case 1:
+      Serial.println("ONE");
+      //typically cancel all modes.
+      break;
+    case 2:
+      Serial.println("TWO");
+      //FSstate = 2;
+      //Red_LED_ON;
+      break;
+    case 3:
+      Serial.println("THREE");
+      //go to low power.
+      break;
+    case 4:
+      Serial.println("FOUR");
+      //go to bi-directional sweep mode.
+      break;
+    default:
+      Serial.println("DEFAULT");
+      break;
+  }
+  
 }
 
