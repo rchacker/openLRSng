@@ -177,7 +177,7 @@ uint32_t BTN_DN_time = 0;  // time when button went down...
 const uint32_t MS_OPT = 2000; //millis between options
 const uint32_t BP_DR = 100; //beep duration
 const uint8_t DEBOUNCE = 20;
-//button is pressed returns -1
+//button is pressed returns 0
 //button is up and no change 0
 //one beep release returns option 1
 //two beeps release returns option 2
@@ -243,9 +243,6 @@ int8_t checkButton(uint8_t no_of_options)
       return 0;
     }
   }
-  
-  
-
   
 }
 
@@ -591,6 +588,27 @@ void loop(void)
   //Green LED will be OFF
   Green_LED_OFF;
 
-  checkFS();
+  //checkFS();
+  
+  switch (checkButton(4)) {
+    case 0:
+      break;
+    case 1:
+      Serial.println("ONE");
+      break;
+    case 2:
+      Serial.println("TWO");
+      break;
+    case 3:
+      Serial.println("THREE");
+      break;
+    case 4:
+      Serial.println("FOUR");
+      break;
+    default:
+      Serial.println("DEFAULT");
+      break;
+  }
+  
 }
 
